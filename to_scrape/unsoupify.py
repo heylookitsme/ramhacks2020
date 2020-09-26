@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-html = open("Tinley_Park_Chicago.html","r")
+html = open("washington_state.html","r")
 html = html.read()
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -35,7 +35,7 @@ for x in model_trim:
     print(x)
 print("\n")
 for x in price:
-    print(x[:-1])
+    print(x[:-1].replace(",",""))
 print("\n")
 for x in miles:
     print(x.split(" ")[0])
