@@ -1,6 +1,5 @@
-import re
-import gui.py
 import re, csv
+import gui 
 
 def read_file_csv(filename) -> list:
     f = csv.reader(open(filename), delimiter=',', quotechar='"')
@@ -52,10 +51,8 @@ def main():
     big_list = read_file_csv('cali_cars.csv')
     print(big_list)
     strings_to_ints(big_list)
-    print(big_list)
-    root = Tk()
-    my_gui = MyFirstGUI(root)
-    root.mainloop()
+    print(big_list)    
+    gui.start()
 
 if __name__ == "__main__":
     main()

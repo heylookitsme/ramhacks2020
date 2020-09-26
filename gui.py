@@ -17,7 +17,9 @@ class MyFirstGUI:
     def greet(self):
         print("Greetings!")
 
-root = Tk()
-my_gui = MyFirstGUI(root)
-root.mainloop()
+def start():
+    root = Tk()
+    my_gui = MyFirstGUI(root)
+    root.mainloop()
+
 
