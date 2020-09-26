@@ -1,4 +1,5 @@
 import re
+import gui.py
 
 def read_file(filename) -> list:
     to_return = []  # list of lists to be returned
@@ -42,7 +43,9 @@ def main():
     print(big_list)
     strings_to_ints(big_list)
     print(big_list)
-
+    root = Tk()
+    my_gui = MyFirstGUI(root)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
