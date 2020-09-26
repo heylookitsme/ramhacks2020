@@ -20,7 +20,7 @@ def strings_to_ints(car_list) -> list:
         else:
             car[0] = "Not Available"
 
-        #car[5] = int(car[5][1::])
+        car[5] = int(car[5][1::].replace(',', ''))
 
     return car_list
 
