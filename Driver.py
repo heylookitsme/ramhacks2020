@@ -48,11 +48,20 @@ def strings_to_ints(car_list) -> list:
     return car_list
 
 
+def list_to_dict_by_shipping(car_list) -> dict:
+    to_return = dict([])
+    for car in car_list:
+        if car[0] in to_return.keys():
+            to_return[car[0]].append(car)
+        else:
+            to_return[car[0]] = [].append(car)
+    return to_return
+
 def main():
-    big_list = read_file_csv('cali_cars.csv')
-    print(big_list)
-    strings_to_ints(big_list)
-    print(big_list)    
+    # big_list = read_file_csv('cali_cars.csv')
+    # print(big_list)
+    # strings_to_ints(big_list)
+    # print(big_list)
     gui.start()
 
 if __name__ == "__main__":
