@@ -1,5 +1,6 @@
-import re, csv
-import gui 
+#import re
+import csv
+import gui
 
 def read_file_csv(filename) -> list:
     f = csv.reader(open(filename), delimiter=',', quotechar='"')
