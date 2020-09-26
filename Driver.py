@@ -1,6 +1,8 @@
 #import re
 import csv
 import gui
+import matplotlib as plt
+
 
 def read_file_csv(filename) -> list:
     f = csv.reader(open(filename), delimiter=',', quotechar='"')
@@ -34,6 +36,7 @@ def fix_regex_mess(car_list) -> list:
         del car[1:10:2]
 '''
 
+
 def strings_to_ints(car_list) -> list:
     for car in car_list[1:]:
         if car[0].lower() == 'free': #parse shipping price into ints
@@ -57,12 +60,21 @@ def list_to_dict_by_shipping(car_list) -> dict:
             to_return[car[0]] = [].append(car)
     return to_return
 
+
+def extract(car_list, index) -> list: #takes the indexth element of all cars
+    to_return = []
+    for car in car_list:
+        to_return.append(car[index])
+    return to_return
+
+
 def main():
     # big_list = read_file_csv('cali_cars.csv')
     # print(big_list)
     # strings_to_ints(big_list)
     # print(big_list)
     gui.start()
+
 
 if __name__ == "__main__":
     main()
