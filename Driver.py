@@ -11,9 +11,25 @@ def read_file(filename) -> list:
     return to_return
 
 
+def strings_to_ints(car_list) -> list:
+    for car in car_list[1:]:
+        if car[0].lower() == 'free': #parse shipping price into ints
+            car[0] = 0
+        elif car[0][0] == "$":
+            car[0] = int(car[0][1:].replace(',', ''))
+        else:
+            car[0] = "Not Available"
+
+        #car[5] = int(car[5][1::])
+
+    return car_list
+
+
 def main():
     big_list = read_file('cali_cars.csv')
-    #print(big_list)
+    print(big_list)
+    strings_to_ints(big_list)
+    print(big_list)
 
 
 if __name__ == "__main__":
