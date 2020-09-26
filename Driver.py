@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import re
 import gui.py
 import re, csv
