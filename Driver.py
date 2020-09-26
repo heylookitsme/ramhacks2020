@@ -1,5 +1,14 @@
-import re
+import re, csv
 
+def read_file_csv(filename) -> list:
+    f = csv.reader(open(filename), delimiter=',', quotechar='"')
+    to_return = []
+    for row in f:
+        to_return.append(row)
+    return to_return
+
+#deprecated
+'''
 def read_file(filename) -> list:
     to_return = []  # list of lists to be returned
     f = open(filename)  # default reading/text
@@ -14,12 +23,14 @@ def read_file(filename) -> list:
             to_add[i] = to_add[i].replace('"', '').strip()
         to_return.append(to_add)
     return to_return
+'''
 
-
+#also deprecated
+'''
 def fix_regex_mess(car_list) -> list:
     for car in car_list[1::]:
         del car[1:10:2]
-
+'''
 
 def strings_to_ints(car_list) -> list:
     for car in car_list[1:]:
@@ -36,9 +47,7 @@ def strings_to_ints(car_list) -> list:
 
 
 def main():
-    big_list = read_file('cali_cars.csv')
-    print(big_list)
-    fix_regex_mess(big_list)
+    big_list = read_file_csv('cali_cars.csv')
     print(big_list)
     strings_to_ints(big_list)
     print(big_list)
