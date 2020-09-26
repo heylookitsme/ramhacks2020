@@ -1,9 +1,6 @@
 def read_file(filename) -> list:
     to_return = []  # list of lists to be returned
-    try:
-        f = open(filename)  # default reading/text
-    except IOError:
-        print("IOError has occurred, check filename?")
+    f = open(filename)  # default reading/text
     try:
         s = f.readline()
         to_add = s.split(',')
