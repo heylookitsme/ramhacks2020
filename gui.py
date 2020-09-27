@@ -174,7 +174,7 @@ class GUI:
         self.mb["menu"]=self.mb.menu
 
         self.loc = StringVar()
-        self.loc = "AL"
+        self.loc.set("AL")
         for state in map_coordinates.keys():
             self.mb.menu.add_checkbutton(label = state, variable = self.loc, command = self.select_location)
         self.mb.pack(side=TOP, padx=10, pady=10)
@@ -211,7 +211,7 @@ class GUI:
         #self.mb.pack(side=TOP, padx=10, pady=10)
 
         #information about car 
-        self.carinfo = Message(self.rframe, text="lets say, hypothetically, you have a car. hypothetically, then, this is where the information of the car would go. like its price. its store location. um. model? brand? name. idk", width=200)
+        self.carinfo = Message(self.fright, text="lets say, hypothetically, you have a car. hypothetically, then, this is where the information of the car would go. like its price. its store location. um. model? brand? name. idk", width=200)
         self.carinfo.pack(side=TOP,padx=10,pady=10,fill=BOTH)
 
 
@@ -281,15 +281,14 @@ class GUI:
         self.populate_search()
 
     def update_info(self):
-        self.update_carinfo(self.cardata)
-        self.set_map_path(self.cardata[1],self.loc)
+        if self.cardata:
+            self.update_carinfo(self.cardata)
+            self.set_map_path(self.cardata[1],self.loc)
 
 
 def start():
     root = ThemedTk(theme="equilux")
     my_gui = GUI(root)
-    my_gui.set_map_path("MD","WA")
-    my_gui.set_map_path("AK","FL")
     root.mainloop()
 
 
