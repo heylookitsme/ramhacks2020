@@ -1,5 +1,7 @@
 #import re
 import csv
+
+import api_requests
 import gui
 import matplotlib as plt
 
@@ -73,6 +75,7 @@ def main():
     # print(big_list)
     # strings_to_ints(big_list)
     # print(big_list)
+    print(api_requests.car_request("/cars/mdx/acura",2000,20854))
     gui.start()
 
 
