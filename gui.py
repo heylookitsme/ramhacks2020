@@ -176,7 +176,7 @@ class GUI:
         self.loc = StringVar()
         self.loc.set("AL")
         for state in map_coordinates.keys():
-            self.mb.menu.add_checkbutton(label = state, variable = self.loc, command = self.select_location)
+            self.mb.menu.add_checkbutton(label = state, variable = self.loc, command = (lambda state: lambda: self.select_location(state))(state))
         self.mb.pack(side=TOP, padx=10, pady=10)
 
         #car entry field
@@ -242,7 +242,8 @@ class GUI:
         self.map.create_image((0,0),image=self.USmap,anchor='nw')
         self.draw_map()
     
-    def select_location(self):
+    def select_location(self, state):
+        self.loc.set(state)
         print(self.loc)
         self.update_info()
 
