@@ -233,6 +233,10 @@ class GUI:
         self.close_button = Button(self.fright, text="Close", command=master.quit)
         self.close_button.pack(side=TOP, padx=10, pady=10)
 
+        # percentage bar
+        self.percentage = Progressbar(self.fright, mode="determinate", length=32)
+        self.percentage.pack(side=TOP,padx=10,pady=10)
+
     def draw_map(self):
         if self.state_from and self.state_to:
             start=map_coordinates[self.state_from]
@@ -252,14 +256,20 @@ class GUI:
 
     def update_carinfo(self, car_data):
         distance = distances[car_data[1]+self.loc.get()]
+        price = int(car_data[5].replace("$","").replace(",",""))
         self.estimate = round(m * distance + b)
+        total = price + self.estimate
+        percentage = round(self.estimate * 100 / total)
         s = ("Model: " + car_data[3] + " " + car_data[4] + "\n" +
                 "Price: " + car_data[5] + "\n" +
                 "Mileage: " + car_data[6] + " miles\n" +
                 "Store: " + car_data[7] + "\n" +
                 "Location: " + car_data[1] + "\n" +
-                "Estimated Transfer Fee: $" + str(self.estimate))
+                "Estimated Transfer Fee: $" + str(self.estimate) + "\n" +
+                "Total (Price and Transfer Fee): " + total + "\n" +
+                "Transfer Fee Percentage of Total: " + percentage + "%\n")
         self.carinfo.configure(text=s)
+        self.percentage["value"] = percentage
     
     def select_car(self, i):
         print(i)
