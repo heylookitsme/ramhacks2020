@@ -247,7 +247,7 @@ class GUI:
         self.update_info()
 
     def update_carinfo(self, car_data):
-        distance = distances[car_data[1]+self.loc]
+        distance = distances[car_data[1]+self.loc.get()]
         self.estimate = round(m * distance + b)
         s = ("Model: " + car_data[3] + " " + car_data[4] + "\n" +
                 "Price: " + car_data[5] + "\n" +
@@ -283,7 +283,7 @@ class GUI:
     def update_info(self):
         if self.cardata:
             self.update_carinfo(self.cardata)
-            self.set_map_path(self.cardata[1],self.loc)
+            self.set_map_path(self.cardata[1],self.loc.get())
 
 
 def start():
