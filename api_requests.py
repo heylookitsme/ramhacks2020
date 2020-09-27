@@ -32,8 +32,8 @@ def car_request(uri,radius,zip):
     
     full_url = url + "?" + data
     print(full_url)
-    req = urllib.request.Request(full_url,data=None,headers=headers)
-    print(req.type)
+    req = urllib.request.Request(full_url,data=None,headers=headers,method='GET')
+    print(req.method)
     return open_request(req)
     
 
