@@ -217,14 +217,14 @@ class GUI:
 
         #map 
         self.map = Canvas(master, bg="white", height=322, width=627)
-        self.map.pack(side=RIGHT, padx=10, pady=10)
+        self.map.pack(side=TOP, padx=10, pady=10)
         self.USmap = PhotoImage(file="map.png")
         self.map.create_image((0,0),image=self.USmap,anchor='nw')
         self.state_from = None
         self.state_to = None
                 
         #close button 
-        self.close_button = Button(self.leftframe, text="Close", command=master.quit)
+        self.close_button = Button(self.fright, text="Close", command=master.quit)
         self.close_button.pack(side=TOP, padx=10, pady=10)
 
     def draw_map(self):
