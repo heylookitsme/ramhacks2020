@@ -1,5 +1,7 @@
 import urllib.request
 import urllib.parse
+import requests
+import urllib3
 
 url="https://www.carmax.com/cars/api/search/run"
 #url="https://api.carmax.com/v1/api/vehicles"
@@ -20,7 +22,7 @@ def car_request(uri,radius,zip):
     #values['zipCode']=zip
     #values['sort']=14
     data = urllib.parse.urlencode(values)
-    
+
     headers = {'User-Agent' : user_agent,
         'Host' : 'www.carmax.com',
         'Accept' : '*/*;q=0.8',
@@ -30,14 +32,17 @@ def car_request(uri,radius,zip):
         'DNT' : '1',
         'Connection' : 'keep-alive',
         'Upgrade-Insecure-Requests' : '1'}
-    
     full_url = url + "?" + data
     print(full_url)
     req = urllib.request.Request(full_url,data=None,headers=headers,method='GET')
+    print("req created successfully")
+    #esponse = urllib.request.urlopen(full_url)
+    #print("successfully opened")
     print(req.method)
     print(req.data)
-    print(req.full_url)
     return open_request(req)
-    
+    # response = requests.get(full_url)
+    # print(response.status_code)
+    # return response.content
 
 
