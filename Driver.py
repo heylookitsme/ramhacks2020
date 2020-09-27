@@ -70,12 +70,20 @@ def extract(car_list, index) -> list: #takes the indexth element of all cars
     return to_return
 
 
+def plot_hist(car_list, root):
+    fig = plt.Figure(figsize=(5, 4), dpi=100)
+    fig.add_subplot(111).hist(extract(car_list, 0), 50)
+    canvas = plt.FigureCanvasTkAgg(fig, master=root)
+    canvas.draw()
+    canvas.get_tk_widget().pack(side=plt.tkinter.TOP, fill=plt.tkinter.BOTH, expand=1)
+
+
 def main():
-    # big_list = read_file_csv('cali_cars.csv')
-    # print(big_list)
-    # strings_to_ints(big_list)
-    # print(big_list)
-    print(api_requests.car_request("/cars/mdx/acura",2000,20854))
+    big_list = read_file_csv('cali_cars.csv')
+    print(big_list)
+    strings_to_ints(big_list)
+    print(big_list)
+    # print(api_requests.car_request("/cars/mdx/acura",2000,20854))
     gui.start()
 
 
