@@ -228,14 +228,14 @@ class GUI:
         self.graf.pack(side=TOP, padx=10, pady=10)
         self.linreg = PhotoImage(file="reg_display.png")
         self.graf.create_image((30,0),image=self.linreg,anchor='nw')
+
+        # percentage bar
+        self.percentage = Progressbar(self.fright, mode="determinate", length=200)
+        self.percentage.pack(side=TOP,padx=10,pady=10)
                 
         #close button 
         self.close_button = Button(self.fright, text="Close", command=master.quit)
         self.close_button.pack(side=TOP, padx=10, pady=10)
-
-        # percentage bar
-        self.percentage = Progressbar(self.fright, mode="determinate", length=32)
-        self.percentage.pack(side=TOP,padx=10,pady=10)
 
     def draw_map(self):
         if self.state_from and self.state_to:
@@ -275,8 +275,8 @@ class GUI:
                 "Store: " + car_data[7] + "\n" +
                 "Location: " + car_data[1] + "\n" +
                 "Estimated Transfer Fee: $" + str(self.estimate) + "\n" +
-                "Total (Price and Transfer Fee): " + total + "\n" +
-                "Transfer Fee Percentage of Total: " + percentage + "%\n")
+                "Total (Price and Transfer Fee): " + str(total) + "\n" +
+                "Transfer Fee Percentage of Total: " + str(percentage) + "%\n")
         self.carinfo.configure(text=s)
         self.percentage["value"] = percentage
     
