@@ -227,7 +227,7 @@ class GUI:
         self.graf = Canvas(master, bg="white", height=322, width=627)
         self.graf.pack(side=TOP, padx=10, pady=10)
         self.linreg = PhotoImage(file="reg_display.png")
-        self.graf.create_image((0,0),image=self.linreg,anchor='nw')
+        self.graf.create_image((30,0),image=self.linreg,anchor='nw')
                 
         #close button 
         self.close_button = Button(self.fright, text="Close", command=master.quit)
