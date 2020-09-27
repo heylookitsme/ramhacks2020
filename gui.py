@@ -237,7 +237,16 @@ class GUI:
         if self.state_from and self.state_to:
             start=map_coordinates[self.state_from]
             end=map_coordinates[self.state_to]
-            self.map.create_line(start[0],start[1],end[0],end[1],width=5,arrow=LAST,fill='#a65')
+            dist = (start[0]-start[1])**2 + (end[0]-end[1]) **2
+            color = '#919191'
+            if dist > 0:
+                color = '#83db48'
+            if dist > 20000: 
+                color = '#edaa24'
+            if dist > 40000: 
+                color = '#a65'
+            print(dist)    
+            self.map.create_line(start[0],start[1],end[0],end[1],width=5,arrow=LAST,fill=color)
 
     def set_map_path(self, state_from, state_to):
         self.state_from = state_from
