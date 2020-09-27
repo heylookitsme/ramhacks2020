@@ -1,7 +1,5 @@
 import urllib.request
 import urllib.parse
-import requests
-import urllib3
 
 url="https://www.carmax.com/cars/api/search/run"
 #url="https://api.carmax.com/v1/api/vehicles"
