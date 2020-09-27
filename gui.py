@@ -148,12 +148,12 @@ class GUI:
         master.geometry('1080x720')
         
         #title 
-        self.label = Label(master, text="Cars, better than trains")
-        self.label.config(font=("Courier", 20))
+        self.label = Label(master, text="Where are your cars coming from?")
+        self.label.config(font=("Courier", 15))
         self.label.pack(padx=10, pady=10)
 
         #infoframe 
-        self.finfo = Frame(master) 
+        self.finfo = Frame(master, width=200) 
         self.finfo.pack(side=LEFT, padx=10, pady=10)
 
         #left frame with car selection information 
@@ -162,14 +162,14 @@ class GUI:
         
         #frame with searchbar and results
         self.searchframe = Frame(self.leftframe)
-        self.searchframe.pack(side=LEFT, padx=10, pady=10)
+        self.searchframe.pack(side=TOP, padx=10, pady=10)
  
         #right frame  with car selection information 
         self.fright = Frame(self.finfo)
-        self.fright.pack(side=RIGHT, padx=10, pady=10)
+        self.fright.pack(side=TOP, padx=10, pady=10)
         
         #menu to select location 
-        self.mb = Menubutton(self.leftframe, text="My Location")
+        self.mb = Menubutton(self.fright, text="My Location")
         self.mb.menu = Menu(self.mb)
         self.mb["menu"]=self.mb.menu
 
@@ -211,7 +211,7 @@ class GUI:
         #self.mb.pack(side=TOP, padx=10, pady=10)
 
         #information about car 
-        self.carinfo = Message(self.fright, text="lets say, hypothetically, you have a car. hypothetically, then, this is where the information of the car would go. like its price. its store location. um. model? brand? name. idk", width=200)
+        self.carinfo = Message(self.fright, text="Pick a car to get started :)", width=200)
         self.carinfo.pack(side=TOP,padx=10,pady=10,fill=BOTH)
 
 
@@ -226,9 +226,6 @@ class GUI:
         #close button 
         self.close_button = Button(self.leftframe, text="Close", command=master.quit)
         self.close_button.pack(side=TOP, padx=10, pady=10)
-
-    def greet(self):
-        print("Greetings!")
 
     def draw_map(self):
         if self.state_from and self.state_to:
